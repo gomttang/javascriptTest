@@ -64,7 +64,7 @@ var drinks = function(){
 	
 	
 	
-	/* �덉쓣 div�섏쐞���ｌ뼱以�떎. */
+	/* 돈을 화면에 배치 */
 	
 	var moneyPrint = function(){
 		innerTop=230;
@@ -83,7 +83,7 @@ var drinks = function(){
 	};
 	
 	
-	/* �먰뙋湲��붾㈃���뚮즺瑜�洹몃젮以�떎 */
+	/* 음료를 화면에 배치 */
 	var drinkingPrint = function(){
 		randomNum = randomRange(0,7);
 		//console.debug(randomNum);
@@ -133,9 +133,9 @@ var drinks = function(){
 	}
 	
 	/*
-	 * myMoney 吏�컩���덈뒗��
-	 * selectedMoney 諛⑷툑 �좏깮����
-	 * insertedMoney �먰뙋湲곗뿉 �덈뒗��
+	 * myMoney 내가 소지하고 있는돈
+	 * selectedMoney 기계에 넣는 돈(선택한 돈)
+	 * insertedMoney 기계에 들어 있는 돈
 	 */
 
 	var selectedMoney;
@@ -155,7 +155,7 @@ var drinks = function(){
 	};
 	
 	
-	/* ���쒕옒洹����쒕엻 ���대깽��*/
+	/* 돈 삽입 이벤트 */
 	var MoneyInsertEvent =function(result, obj){
 		
 		selectedMoney= parseInt(obj.innerHTML);
@@ -199,7 +199,7 @@ var drinks = function(){
 	};
 	
 		
-	/* �쒕쭅���대깽��*/
+	/* 구매 event */
 	var buyDrinking=function(){
 		
 		var childs = this.childNodes;
@@ -233,7 +233,7 @@ var drinks = function(){
 	
 	
 	
-	/* �쒕뜡 媛�怨꾩궛 */
+	/* 랜덤 값 생성 */
 	var randomValue = function(){
 		return Math.floor((Math.random() * (3 - 1 + 1)) + 1 );
 	};
@@ -261,11 +261,9 @@ var drinks = function(){
 
 
 function addEvent(Element, EventType, Handler) {
-
 	if(document.addEventListener) {
-		//DOM �좎룞�쇿뜝占�		Element.addEventListener(EventType, Handler, false);
-	}else if(document.attachEvent) {
-		//IE	
+		Element.addEventListener(EventType, Handler, false);
+	}else if(document.attachEvent) {	
 		Element.attachEvent("on"+EventType, Handler);
 	}
 };	

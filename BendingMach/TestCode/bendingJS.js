@@ -5,6 +5,11 @@ window.onload = function(){
 	
 	var drinksInstance = new drinks();	
 	drinksInstance.init();
+	
+	/* 테스트 코드 객체*/
+	var testQunitInstance = new testQunit();
+	testQunitInstance.testQunitStart();
+	
 };
 
 
@@ -37,6 +42,9 @@ var drinks = function(){
 		//console.debug(sortOfDrinks);
 	};
 	
+	this.getDrinks = function(){	
+		return sortOfDrinks;
+	};
 	
 
 	function printConsole(consoleText){
@@ -56,7 +64,7 @@ var drinks = function(){
 	
 	
 	
-	/* 돈을 div하위에 넣어준다. */
+	/* �덉쓣 div�섏쐞���ｌ뼱以�떎. */
 	
 	var moneyPrint = function(){
 		innerTop=230;
@@ -75,7 +83,7 @@ var drinks = function(){
 	};
 	
 	
-	/* 자판기 화면에 음료를 그려준다 */
+	/* �먰뙋湲��붾㈃���뚮즺瑜�洹몃젮以�떎 */
 	var drinkingPrint = function(){
 		randomNum = randomRange(0,7);
 		//console.debug(randomNum);
@@ -125,9 +133,9 @@ var drinks = function(){
 	}
 	
 	/*
-	 * myMoney 지갑에 있는돈
-	 * selectedMoney 방금 선택한 돈
-	 * insertedMoney 자판기에 있는돈 
+	 * myMoney 吏�컩���덈뒗��
+	 * selectedMoney 諛⑷툑 �좏깮����
+	 * insertedMoney �먰뙋湲곗뿉 �덈뒗��
 	 */
 
 	var selectedMoney;
@@ -147,7 +155,7 @@ var drinks = function(){
 	};
 	
 	
-	/* 돈 드래그 앤 드랍 시 이벤트 */
+	/* ���쒕옒洹����쒕엻 ���대깽��*/
 	var MoneyInsertEvent =function(result, obj){
 		
 		selectedMoney= parseInt(obj.innerHTML);
@@ -177,7 +185,7 @@ var drinks = function(){
 				consoleText=selectedMoney + " : inserted your money!";
 				
 			}else if(result==false){
-				myMoney=myMoney-selectedMoney;    /* 지갑에 있는돈 */
+				myMoney=myMoney-selectedMoney;    /* 吏�컩���덈뒗��*/
 				oMyMoneyStat.innerHTML=myMoney;  
 				
 				consoleText=selectedMoney + " dropped money m.m";
@@ -191,7 +199,7 @@ var drinks = function(){
 	};
 	
 		
-	/* 드링킹 이벤트 */
+	/* �쒕쭅���대깽��*/
 	var buyDrinking=function(){
 		
 		var childs = this.childNodes;
@@ -225,7 +233,7 @@ var drinks = function(){
 	
 	
 	
-	/* 랜덤 값 계산 */
+	/* �쒕뜡 媛�怨꾩궛 */
 	var randomValue = function(){
 		return Math.floor((Math.random() * (3 - 1 + 1)) + 1 );
 	};
@@ -255,8 +263,7 @@ var drinks = function(){
 function addEvent(Element, EventType, Handler) {
 
 	if(document.addEventListener) {
-		//DOM 占쏙옙占�
-		Element.addEventListener(EventType, Handler, false);
+		//DOM �좎룞�쇿뜝占�		Element.addEventListener(EventType, Handler, false);
 	}else if(document.attachEvent) {
 		//IE	
 		Element.attachEvent("on"+EventType, Handler);

@@ -9,12 +9,7 @@ var SpinComponent=function(elCanvas,userOptions){
 	var lines, length, width, radius, trail, speed, bShadow, color;
 	var lineAngle;
 	var nCurrentLine=0;	
-	/* SpinComponent 객체 생성시 옵션 설정 */
-	/*
-	if(userOptions!=undefined){
-		setOptions(userOptions);
-	}*/
-	
+
 	
 	this.init=function(){
 		/* 배경화면 */
@@ -23,22 +18,26 @@ var SpinComponent=function(elCanvas,userOptions){
 		context.fillRect(0, 0, context.canvas.width, context.canvas.height);	
 		context.lineCap='round';
 		
-		
-			d=0;
-			/* 디폴트 옵션 */
-			option={
-					lines : 13,
-					length : 10,
-					width : 4,
-					radius : 10,
-					speed : 100,
-					trail : 1.0,
-					color : {r:0, g:0, b:0}				
-			};
-				
-	
+		/* 디폴트 옵션 */
+		option={
+				lines : 13,
+				length : 10,
+				width : 4,
+				radius : 10,
+				speed : 100,
+				trail : 1.0,
+				color : {r:0, g:0, b:0}};
+			
 		/* 버튼 등록 */
-		
+		new spinBox(document.getElementById("lines"), document.getElementById("in_lines"),document.getElementById("de_lines"),{min:2,max:40, def:13,step:1}, exm.onDataChange);
+		new spinBox(document.getElementById("length"), document.getElementById("in_length"),document.getElementById("de_length"),{min:1,max:40, def:10,step:1}, exm.onDataChange );
+		new spinBox(document.getElementById("width"), document.getElementById("in_width"),document.getElementById("de_width"),{min:1,max:10, def:4,step:1}, exm.onDataChange);
+		new spinBox(document.getElementById("radius"), document.getElementById("in_radius"),document.getElementById("de_radius"),{min:1,max:20, def:10,step:1}, exm.onDataChange );
+		new spinBox(document.getElementById("trail"), document.getElementById("in_trail"),document.getElementById("de_trail"), {min:0.1,max:1.0, def:1.0, step:0.1}, exm.onDataChange);
+		new spinBox(document.getElementById("speed"), document.getElementById("in_speed"),document.getElementById("de_speed"), {min:10,max:1000, def:100 ,step:10}, exm.onDataChange);
+		new spinBox(document.getElementById("r"), document.getElementById("in_r"),document.getElementById("de_r"), {min:0,max:255, def:0 ,step:1}, exm.onDataChange);
+		new spinBox(document.getElementById("g"), document.getElementById("in_g"),document.getElementById("de_g"), {min:0,max:255, def:0 ,step:1}, exm.onDataChange);
+		new spinBox(document.getElementById("b"), document.getElementById("in_b"),document.getElementById("de_b"), {min:0,max:255, def:0 ,step:1}, exm.onDataChange);	
 		
 		/* 옵션 세팅 */
 		setOptions(option);
@@ -64,8 +63,7 @@ var SpinComponent=function(elCanvas,userOptions){
 				radius : parseInt(nRadius),
 				trail : parseFloat(nTrail),
 				speed : parseInt(nSpeed),
-				color :{r:parseInt(nR), g:parseInt(nG), b:parseInt(nB)}
-				};
+				color :{r:parseInt(nR), g:parseInt(nG), b:parseInt(nB)}};
 
 		clearTimeout(timer);
 		setOptions(changeOptions);

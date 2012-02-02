@@ -9,13 +9,11 @@ var SpinComponent=function(elCanvas,userOptions){
 	var lines, length, width, radius, trail, speed, bShadow, color;
 	var lineAngle;
 	var nCurrentLine=0;	
-
+	var currentLineAngle;
 	
 	this.init=function(){
 		/* 배경화면 */
 		context = elCanvas.getContext('2d');		
-		context.fillStyle = 'rgba(0,0,0,0.05)';
-		context.fillRect(0, 0, context.canvas.width, context.canvas.height);	
 		context.lineCap='round';
 		
 		/* 디폴트 옵션 */
@@ -32,7 +30,7 @@ var SpinComponent=function(elCanvas,userOptions){
 		new spinBox(document.getElementById("lines"), document.getElementById("in_lines"),document.getElementById("de_lines"),{min:2,max:40, def:13,step:1}, exm.onDataChange);
 		new spinBox(document.getElementById("length"), document.getElementById("in_length"),document.getElementById("de_length"),{min:1,max:40, def:10,step:1}, exm.onDataChange );
 		new spinBox(document.getElementById("width"), document.getElementById("in_width"),document.getElementById("de_width"),{min:1,max:10, def:4,step:1}, exm.onDataChange);
-		new spinBox(document.getElementById("radius"), document.getElementById("in_radius"),document.getElementById("de_radius"),{min:1,max:20, def:10,step:1}, exm.onDataChange );
+		new spinBox(document.getElementById("radius"), document.getElementById("in_radius"),document.getElementById("de_radius"),{min:1,max:40, def:10,step:1}, exm.onDataChange );
 		new spinBox(document.getElementById("trail"), document.getElementById("in_trail"),document.getElementById("de_trail"), {min:0.1,max:1.0, def:1.0, step:0.1}, exm.onDataChange);
 		new spinBox(document.getElementById("speed"), document.getElementById("in_speed"),document.getElementById("de_speed"), {min:10,max:1000, def:100 ,step:10}, exm.onDataChange);
 		new spinBox(document.getElementById("r"), document.getElementById("in_r"),document.getElementById("de_r"), {min:0,max:255, def:0 ,step:1}, exm.onDataChange);
@@ -74,10 +72,6 @@ var SpinComponent=function(elCanvas,userOptions){
 	
 	/* 옵션 설정 */
 	function setOptions(options){	
-		/* 객체의 중심점 */
-		middleX = context.canvas.width/2;
-		middleY = context.canvas.height/2;
-		
 		lines = options.lines;
 		length = options.length;
 		width = options.width;
@@ -86,6 +80,11 @@ var SpinComponent=function(elCanvas,userOptions){
 		trail = options.trail;
 		bShadow = options.bShadow;
 		color = options.color;
+		
+		middleX = context.canvas.width/2;
+		middleY = context.canvas.height/2
+		lineAngle = (Math.PI*2) / lines; /* 선간 각도 */
+		
 		imageDraw();
 	}
 	
@@ -94,12 +93,11 @@ var SpinComponent=function(elCanvas,userOptions){
 	function imageDraw(){
 
 		context.clearRect(0, 0, context.canvas.width, context.canvas.width);		
-		context.fillStyle = 'rgba(0,0,0,0.0.05)';
+		context.fillStyle = 'rgba(0,0,0,0.1)';
 		context.fillRect(0, 0, context.canvas.width, context.canvas.height);
 		
 		trail=1.0;
-		lineAngle = (Math.PI*2) / lines; /* 선간 각도 */
-		var currentLineAngle = nCurrentLine * lineAngle * -1;
+		currentLineAngle = nCurrentLine * lineAngle * -1;
 		
 		context.stroke(); // 이제까지의 패스선 그래픽으로 표현
 		context.closePath(); 
@@ -118,7 +116,8 @@ var SpinComponent=function(elCanvas,userOptions){
 			currentLineAngle += lineAngle;
 			
 			/* 밝기 감소치 */
-			trail-=0.05;	
+			trail = trail > 0.5 ? (trail-0.08) : 0.5
+	
 		}
 		
 		nCurrentLine++;		

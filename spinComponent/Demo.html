@@ -1,0 +1,73 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<title>Insert title here</title>
+
+
+<script type="text/javascript" src="spinJin.js"></script>
+<script type="text/javascript" src="spinBox.js"></script>
+
+</head>
+<body>
+<canvas width="150" height="150"></canvas>
+<canvas width="150" height="150"></canvas>
+
+<div>
+	<label>Lines:</label><input type="text" id="lines" min="6" max="16" step="2" >
+	<button id="in_lines">up</button>
+	<button id="de_lines">down</button><br>
+	<label>Length:</label><input type="text" id="length" min="0" max="30">
+	<button id="in_length">up</button>
+	<button id="de_length">down</button><br>
+	<label>Width:</label><input type="text" id="width" min="2" max="20" >
+	<button id="in_width">up</button>
+	<button id="de_width">down</button><br>
+	<label>Radius:</label><input type="text" id="radius" min="0" max="40" >
+	<button id="in_radius">up</button>
+	<button id="de_radius">down</button><br>
+	<label>Trail:</label><input type="text" id="trail" min="10" max="100" >
+	<button id="in_trail">up</button>
+	<button id="de_trail">down</button><br>
+	<label>Speed:</label><input type="text" id="speed" min="0.5" max="2.2" step="0.1" >
+	<button id="in_speed">up</button>
+	<button id="de_speed">down</button><br>
+	<label>R:</label><input type="text" id="r"  >
+	<button id="in_r">up</button>
+	<button id="de_r">down</button><br>
+	<label>G:</label><input type="text" id="g">
+	<button id="in_g">up</button>
+	<button id="de_g">down</button><br>
+	<label>B:</label><input type="text" id="b"  >
+	<button id="in_b">up</button>
+	<button id="de_b">down</button><br>
+</div>
+
+</body>
+
+
+<script type="text/javascript">
+
+
+window.onload = function(){
+	
+	var userOptions='undefined';
+
+	exm =new SpinComponent(document.getElementsByTagName('canvas')[0], userOptions); /* 엘리먼트, 옵션 */
+	exm.init();
+	
+	new spinBox(document.getElementById("lines"), document.getElementById("in_lines"),document.getElementById("de_lines"),{min:2,max:40, def:13,step:1}, exm.onDataChange);
+	new spinBox(document.getElementById("length"), document.getElementById("in_length"),document.getElementById("de_length"),{min:1,max:40, def:10,step:1}, exm.onDataChange );
+	new spinBox(document.getElementById("width"), document.getElementById("in_width"),document.getElementById("de_width"),{min:1,max:10, def:4,step:1}, exm.onDataChange);
+	new spinBox(document.getElementById("radius"), document.getElementById("in_radius"),document.getElementById("de_radius"),{min:1,max:20, def:10,step:1}, exm.onDataChange );
+	new spinBox(document.getElementById("trail"), document.getElementById("in_trail"),document.getElementById("de_trail"), {min:0.1,max:1.0, def:1.0, step:0.1}, exm.onDataChange);
+	new spinBox(document.getElementById("speed"), document.getElementById("in_speed"),document.getElementById("de_speed"), {min:10,max:1000, def:100 ,step:10}, exm.onDataChange);
+	new spinBox(document.getElementById("r"), document.getElementById("in_r"),document.getElementById("de_r"), {min:0,max:255, def:0 ,step:1}, exm.onDataChange);
+	new spinBox(document.getElementById("g"), document.getElementById("in_g"),document.getElementById("de_g"), {min:0,max:255, def:0 ,step:1}, exm.onDataChange);
+	new spinBox(document.getElementById("b"), document.getElementById("in_b"),document.getElementById("de_b"), {min:0,max:255, def:0 ,step:1}, exm.onDataChange);
+};
+
+</script>
+
+
+</html>

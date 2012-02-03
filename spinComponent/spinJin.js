@@ -15,6 +15,7 @@ var SpinComponent=function(elCanvas,userOptions){
 		/* 배경화면 */
 		context = elCanvas.getContext('2d');		
 		context.lineCap='round';
+		//context.lineJoin='round';
 		
 		/* 디폴트 옵션 */
 		option={
@@ -27,15 +28,15 @@ var SpinComponent=function(elCanvas,userOptions){
 				color : {r:0, g:0, b:0}};
 			
 		/* 버튼 등록 */
-		new spinBox(document.getElementById("lines"), document.getElementById("in_lines"),document.getElementById("de_lines"),{min:2,max:40, def:13,step:1}, exm.onDataChange);
-		new spinBox(document.getElementById("length"), document.getElementById("in_length"),document.getElementById("de_length"),{min:1,max:40, def:10,step:1}, exm.onDataChange );
-		new spinBox(document.getElementById("width"), document.getElementById("in_width"),document.getElementById("de_width"),{min:1,max:10, def:4,step:1}, exm.onDataChange);
-		new spinBox(document.getElementById("radius"), document.getElementById("in_radius"),document.getElementById("de_radius"),{min:1,max:40, def:10,step:1}, exm.onDataChange );
-		new spinBox(document.getElementById("trail"), document.getElementById("in_trail"),document.getElementById("de_trail"), {min:0.1,max:1.0, def:1.0, step:0.1}, exm.onDataChange);
-		new spinBox(document.getElementById("speed"), document.getElementById("in_speed"),document.getElementById("de_speed"), {min:10,max:1000, def:100 ,step:10}, exm.onDataChange);
-		new spinBox(document.getElementById("r"), document.getElementById("in_r"),document.getElementById("de_r"), {min:0,max:255, def:0 ,step:1}, exm.onDataChange);
-		new spinBox(document.getElementById("g"), document.getElementById("in_g"),document.getElementById("de_g"), {min:0,max:255, def:0 ,step:1}, exm.onDataChange);
-		new spinBox(document.getElementById("b"), document.getElementById("in_b"),document.getElementById("de_b"), {min:0,max:255, def:0 ,step:1}, exm.onDataChange);	
+		new spinBox(document.getElementById("lines"), document.getElementById("in_lines"),document.getElementById("de_lines"),{min:2,max:40, def:13,step:1}, onDataChange);
+		new spinBox(document.getElementById("length"), document.getElementById("in_length"),document.getElementById("de_length"),{min:1,max:40, def:10,step:1}, onDataChange );
+		new spinBox(document.getElementById("width"), document.getElementById("in_width"),document.getElementById("de_width"),{min:1,max:10, def:4,step:1}, onDataChange);
+		new spinBox(document.getElementById("radius"), document.getElementById("in_radius"),document.getElementById("de_radius"),{min:1,max:40, def:10,step:1}, onDataChange );
+		new spinBox(document.getElementById("trail"), document.getElementById("in_trail"),document.getElementById("de_trail"), {min:0.1,max:1.0, def:1.0, step:0.1}, onDataChange);
+		new spinBox(document.getElementById("speed"), document.getElementById("in_speed"),document.getElementById("de_speed"), {min:10,max:1000, def:100 ,step:10}, onDataChange);
+		new spinBox(document.getElementById("r"), document.getElementById("in_r"),document.getElementById("de_r"), {min:0,max:255, def:0 ,step:1}, onDataChange);
+		new spinBox(document.getElementById("g"), document.getElementById("in_g"),document.getElementById("de_g"), {min:0,max:255, def:0 ,step:1}, onDataChange);
+		new spinBox(document.getElementById("b"), document.getElementById("in_b"),document.getElementById("de_b"), {min:0,max:255, def:0 ,step:1}, onDataChange);	
 		
 		/* 옵션 세팅 */
 		setOptions(option);
@@ -43,7 +44,7 @@ var SpinComponent=function(elCanvas,userOptions){
 	
 	
 
-	this.onDataChange= function(){
+	function onDataChange(){
 		var nLines = document.getElementById("lines").value;
 		var nLength =document.getElementById("length").value;
 		var nWidth =document.getElementById("width").value;
@@ -106,7 +107,7 @@ var SpinComponent=function(elCanvas,userOptions){
 			context.beginPath();  //패스를 그리기 시작
 			context.lineWidth = width;
 			
-			context.strokeStyle = 'rgba('+color.r+', '+color.g+', '+color.b+', '+trail+')';						
+			context.strokeStyle = 'rgba('+color.r+10+', '+color.g+10+', '+color.b+10+', '+trail+')';						
 			context.moveTo(middleX + Math.sin(currentLineAngle)*(radius), middleY+Math.cos(currentLineAngle)*(radius));			
 			context.lineTo(middleX + Math.sin(currentLineAngle)*(radius + length), middleY+Math.cos(currentLineAngle)*(radius + length));
 

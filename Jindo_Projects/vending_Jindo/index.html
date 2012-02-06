@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<title>Insert title here</title>
+<script type="text/javascript" src="jindo.all.js"></script>
+<script type="text/javascript" src="jindo_component.js"></script>
+
+<script type="text/javascript" src="drag.js"></script>
+<script type="text/javascript" src="DrinkingProduct.js"></script>
+<script type="text/javascript" src="Vending.js"></script>
+<script type="text/javascript" src="console.js"></script>
+
+<link rel="stylesheet" href="bendingCss.css" type="text/css" />
+
+</head>
+<body>
+<div id="wrapper">
+	<div id="menu"></div>
+	
+	<div id="moneyAndChange">	
+		<div id="insertMoney">0원</div>
+		<div id="moneyWrapper">
+			<div id="50won" class="won">50</div>
+			<div id="100won" class="won">100</div>
+			<div id="500won" class="won">500</div>
+			<div id="1000won" class="won">1000</div>
+		</div>
+		<div id="leftMoneyWrapper">
+				<div>10000</div>	 
+		</div>
+		<div id="returnButton">반환해줘</div>
+	</div>
+	<div id="consoleWrapper">
+		<textarea rows="10" cols="65" style="overflow-x:hidden; overflow-y:auto;"id="consoles"></textarea>
+	</div>
+</div>
+</body>
+<script type="text/javascript">
+var el = $Element("menu");
+new Vending(el);
+</script>
+</html>

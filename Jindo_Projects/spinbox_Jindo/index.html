@@ -1,0 +1,28 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<title>Insert title here</title>
+
+<script type="text/javascript" src="jindo.all.js"></script>
+<script type="text/javascript" src="spinboxJindo.js"></script>
+</head>
+<body>
+
+
+<input type="text" id="spinBox">
+<button id="increaseBtn">up</button>
+<button id="decreaseBtn">down</button>
+
+</body>
+<script type="text/javascript">
+window.onload=function(){		
+	var oSpinBox = $Element("spinBox");
+	var elIncreaseBtn = $Element("increaseBtn");
+	var elDecreaseBtn = $Element("decreaseBtn");
+	var btnOptions = {min:100, max: 300, step:1};
+	var fUserCallback = null;
+	new spinBox(oSpinBox, elIncreaseBtn, elDecreaseBtn, btnOptions, fUserCallback );
+};
+</script>
+</html>

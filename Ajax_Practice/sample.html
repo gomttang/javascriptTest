@@ -1,0 +1,27 @@
+﻿<html>
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+		<script type="text/javascript" language="javascript" src="jindo.all.js"></script>
+		<script type="text/javascript" language="javascript" src="scripts.js"></script>
+		
+	</head>
+	<body>
+		<ul id="list"></ul>
+		<!--
+			'받아오기' 를 눌렀을 때 위의 목록이 아래와 같이 바뀌어야 합니다.
+			
+			<ul id="list">
+				<li>첫번째</li>
+				<li>두번째</li>
+				<li>세번째</li> 
+			</ul>
+		-->
+		<button onclick="ajaxRequestXml(); return false;">xhr+xml 받아오기</button>
+		<button onclick="ajaxRequestJson(); return false;">xhr+json 받아오기</button>
+		<button onclick="ajaxRequest(); return false;">xhr+plainText 받아오기</button><br/>
+		<button onclick="ajaxRequestJsonpJSON(); return false;">jsonp+JSON 받아오기</button>
+		
+		<button onclick="ajaxRequestJsonpPlain(); return false;">jsonp+plainText 받아오기</button>
+		
+	</body>
+</html>

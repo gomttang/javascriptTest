@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<title>Insert title here</title>
+</head>
+<body>
+
+<div id="spin2">
+	<input type="text" id="spinBox">
+	<button id="increaseBtn">위로</button>
+	<button id="decreaseBtn">아래로</button>
+</div>
+<div id="spin1">
+<a></a>
+	<input type="text" id="spinBox2">
+	<button id="increaseBtn2">up</button>
+	<button id="decreaseBtn2">down</button>
+</div>
+
+</body>
+<script type="text/javascript" src="jindo.all.js"></script>
+<script type="text/javascript" src="jindo_component.js"></script>
+<script type="text/javascript" src="spin_component.js"></script>
+<script type="text/javascript">
+
+(
+function init(){
+	var fUserCallback = null;
+	
+	newSpin33 = new spin($Element("spin2"),fUserCallback);
+	newSpin3 = new spin("spin1",function(e){},{
+						"min" : 199, 
+						"max": 220,
+						"durationDelay": 0.01}
+						);
+	//newSpin3.option({"min" : 199, "max": 220,"durationDelay": 0.01});
+
+})();
+</script>
+</html>

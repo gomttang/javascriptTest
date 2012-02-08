@@ -1,0 +1,54 @@
+@CHARSET "UTF-8";
+
+#calender_year{
+	border :1px solid;
+	float : left;
+}
+
+#calender_year div{
+	text-align : center;
+} 
+#calender_year div .btn-prev-year{
+	font:10px italic ;	
+	
+}
+#calender_year div .btn-next-year{
+	font:10px italic;	
+}
+#calender_year div .title{
+	font-family:sans-serif;
+	font:22px;	
+}
+#calender_year table * {
+	text-align:center;	
+	font-size:12px;
+}
+#calender_year table td {	
+	width:30px;	
+	height:20px;	
+	text-align:center;
+}
+#calender_year .date { 
+	cursor: pointer; 
+}
+#calender_year .date:hover { 
+	background:#E0EEEE; 
+}
+#calender_year .date.sun { 
+	color:#EE3B3B; 
+}
+#calender_year .date.sat { 
+	color:#6495ED; 
+}
+#calender_year .date.today { 
+	background:#FDF2EE; 
+}
+#calender_year .date.prev-mon {
+	opacity: 0.2; filter:alpha(opacity=20); 
+}
+#calender_year .date.next-mon {
+	opacity: 0.2; filter:alpha(opacity=20);
+}
+#calender_year .date.selected {
+	background:#9370db;
+}

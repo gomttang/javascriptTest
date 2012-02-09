@@ -110,8 +110,10 @@ function draggable(elElement){
 	}
 	
 	function deleteCloneElement(){
-		$Element(elCloneDrag).leave();	
-		elCloneDrag = null;
+		if(elCloneDrag){
+			$Element(elCloneDrag).leave();	
+			elCloneDrag = null;
+		}
 	}
 };
 
